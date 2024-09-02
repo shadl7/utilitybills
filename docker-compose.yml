@@ -1,0 +1,27 @@
+networks:
+  common_net:
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - "./nginx.conf:/etc/nginx/nginx.conf"
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - common_net
+
+  backend:
+    build:
+      context: ./backend
+    networks:
+      - common_net
+
+  frontend:
+    build:
+      context: ./frontend
+    networks:
+      - common_net

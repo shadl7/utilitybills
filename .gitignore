@@ -1,0 +1,13 @@
+# Backend files
+backend/node_modules/
+backend/build/
+
+# Frontend files
+frontend/node_modules/
+frontend/.next/
+frontend/build/
+frontend/.env*.local
+frontend/next-env.d.ts
+
+# Common files
+.idea/

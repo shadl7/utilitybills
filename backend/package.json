@@ -1,0 +1,32 @@
+{
+  "ignore": [
+    "src/**/*.spec.ts"
+  ],
+  "name": "payment-backend",
+  "version": "1.0.0",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon",
+    "start": "node --loader ts-node/esm --no-warnings=ExperimentalWarning src/main.ts"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "~4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^5.19.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.1",
+    "eslint": "^9.9.1",
+    "globals": "^15.9.0",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.7.0",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.3.0"
+  }
+}
