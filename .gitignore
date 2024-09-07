@@ -1,6 +1,7 @@
 # Backend files
 backend/node_modules/
 backend/build/
+backend/.env
 
 # Frontend files
 frontend/node_modules/
