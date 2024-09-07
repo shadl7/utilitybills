@@ -1,6 +1,10 @@
 networks:
   common_net:
 
+volumes:
+  postgres:
+  pgadmin:
+
 services:
   nginx:
     image: nginx:stable-alpine
@@ -20,22 +24,35 @@ services:
     networks:
       - common_net
     depends_on:
-      - db
+      - postgres
 
   frontend:
     build:
       context: ./frontend
     networks:
       - common_net
-  db:
-    image: postgres
+  postgres:
+    image: postgres:16-alpine
     restart: always
     shm_size: 128mb
+    volumes:
+      - postgres:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: example
+      POSTGRES_PASSWORD: postgres_pass
+    networks:
+      - common_net
 
-  adminer:
-    image: adminer
+  admin:
+    image: dpage/pgadmin4:8
     restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: changeme@mail.mm
+      PGADMIN_DEFAULT_PASSWORD: changemepass
     ports:
-      - 8080:8080
+      - "15132:80"
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    networks:
+      - common_net
